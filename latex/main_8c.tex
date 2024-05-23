@@ -1,0 +1,306 @@
+\doxysection{main.\+c File Reference}
+\hypertarget{main_8c}{}\label{main_8c}\index{main.c@{main.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{main_8c_a27629f0c27f2c95d69f5f888a32f9f3c}{Bonus\+Exp}} (double X, double Y, double \texorpdfstring{$\ast$}{*}result)
+\begin{DoxyCompactList}\small\item\em Real exponentiation function. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{main_8c_a48aaf9a431fcced2af488a6b99551519}{Whole\+Exp}} (double X, int n)
+\begin{DoxyCompactList}\small\item\em Integer exponentiation function. \end{DoxyCompactList}\item 
+unsigned long long int \mbox{\hyperlink{main_8c_a906a0a1de3ab30aed75709f04442974b}{Int\+Factorial}} (unsigned long long int F)
+\begin{DoxyCompactList}\small\item\em Integer factorial function. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8c_a59de830824acbaf11ea94069bb1ca403}{Rationalize}} (double X, unsigned long long int \texorpdfstring{$\ast$}{*}result)
+\begin{DoxyCompactList}\small\item\em Function to get a simplified fraction from a real, positive decimal. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{main_8c_a9da74129d83e9dee223f76178216c57d}{Nat\+Exp}} (double X)
+\begin{DoxyCompactList}\small\item\em Function to calculate e\texorpdfstring{$^\wedge$}{\string^}X using the power series expansion. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{main_8c_a86cf01e0650e473e8b646418ed7e5707}{Halley\+LN}} (double X)
+\begin{DoxyCompactList}\small\item\em Function to calculate the natural logarithm using Halley\textquotesingle{}s method. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8c_ae15e79727ae79852a73a176880787b32}{Non\+Real\+Root}} (unsigned long long int X, double \texorpdfstring{$\ast$}{*}result)
+\begin{DoxyCompactList}\small\item\em Function to calculate (-\/1)\texorpdfstring{$^\wedge$}{\string^}(1/X). \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{main_8c_a582ccaaa93f50f205543035c935f6c63}{Cosine}} (double X)
+\begin{DoxyCompactList}\small\item\em Function to compute cosine in radians. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{main_8c_aa3aed71ff2c11b33515d924804c8b41c}{Sine}} (double X)
+\begin{DoxyCompactList}\small\item\em Function to compute sine in radians. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\begin{DoxyCompactList}\small\item\em Main function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{main_8c_a27629f0c27f2c95d69f5f888a32f9f3c}\label{main_8c_a27629f0c27f2c95d69f5f888a32f9f3c} 
+\index{main.c@{main.c}!BonusExp@{BonusExp}}
+\index{BonusExp@{BonusExp}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{BonusExp()}{BonusExp()}}
+{\footnotesize\ttfamily void Bonus\+Exp (\begin{DoxyParamCaption}\item[{double}]{X,  }\item[{double}]{Y,  }\item[{double \texorpdfstring{$\ast$}{*}}]{result }\end{DoxyParamCaption})}
+
+
+
+Real exponentiation function. 
+
+Computes X\texorpdfstring{$^\wedge$}{\string^}Y for all real numbers. Reports a complex result by default.
+
+
+\begin{DoxyParams}{Parameters}
+{\em X} & Base \\
+\hline
+{\em Y} & Exponent \\
+\hline
+{\em result} & \texorpdfstring{$>$}{>}2-\/element result buffer for the real and non-\/real parts \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{main_8c_source_l00090}{90}} of file \mbox{\hyperlink{main_8c_source}{main.\+c}}.
+
+\Hypertarget{main_8c_a582ccaaa93f50f205543035c935f6c63}\label{main_8c_a582ccaaa93f50f205543035c935f6c63} 
+\index{main.c@{main.c}!Cosine@{Cosine}}
+\index{Cosine@{Cosine}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{Cosine()}{Cosine()}}
+{\footnotesize\ttfamily double Cosine (\begin{DoxyParamCaption}\item[{double}]{X }\end{DoxyParamCaption})}
+
+
+
+Function to compute cosine in radians. 
+
+Uses the first ten terms of the Maclaurin series to estimate the cosine function. The series is limited to ten terms because 64-\/bit computers cannot compute factorials greater than 20!.
+
+The series does not converge quickly for inputs with magnitude \texorpdfstring{$>$}{>} 2pi. Since the trigonometric functions periodic, the function intentionally removes full rotations from the input in order to guarantee convergence within the computational limit.
+
+Because it is not required for Bonus\+Exp, negative inputs are not fully tested.
+
+
+\begin{DoxyParams}{Parameters}
+{\em X} & Input in radians \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+cos(\+X) 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{main_8c_source_l00485}{485}} of file \mbox{\hyperlink{main_8c_source}{main.\+c}}.
+
+\Hypertarget{main_8c_a86cf01e0650e473e8b646418ed7e5707}\label{main_8c_a86cf01e0650e473e8b646418ed7e5707} 
+\index{main.c@{main.c}!HalleyLN@{HalleyLN}}
+\index{HalleyLN@{HalleyLN}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{HalleyLN()}{HalleyLN()}}
+{\footnotesize\ttfamily double Halley\+LN (\begin{DoxyParamCaption}\item[{double}]{X }\end{DoxyParamCaption})}
+
+
+
+Function to calculate the natural logarithm using Halley\textquotesingle{}s method. 
+
+Halley\textquotesingle{}s method is a modified form of Newton\textquotesingle{}s method for numerically calculating the natural logarithm. It can be derived from Newton\textquotesingle{}s method by leveraging the fact that the derivative of the exponential is itself.
+
+Halley\textquotesingle{}s method requires an initial guess value, and it tends to converge significantly faster if the guess value is higher than the correct result. One advantageous fact of the natural logarithm is that the limit of ln is infinite, but the limit of its slope approaches zero at infinity. This means that the slope of the natural logarithm becomes insignificant with respect to its input when the input is large enough. The largest possible 64-\/bit unsigned integer is 18446744073709551615, and\+: \begin{DoxyVerb}    ln(18446744073709551615) = 44.3614195558
+\end{DoxyVerb}
+ Using 45 as an initial guess is sufficient to achieve convergence for all possible 64-\/bit numbers within the domain of the natural logarithm (X \texorpdfstring{$>$}{>} 0).
+
+
+\begin{DoxyParams}{Parameters}
+{\em X} & Input real number \texorpdfstring{$>$}{>} 0 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ln(\+X) 
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+X is required to be \texorpdfstring{$>$}{>} 0 ! 
+\end{DoxyWarning}
+
+
+Definition at line \mbox{\hyperlink{main_8c_source_l00411}{411}} of file \mbox{\hyperlink{main_8c_source}{main.\+c}}.
+
+\Hypertarget{main_8c_a906a0a1de3ab30aed75709f04442974b}\label{main_8c_a906a0a1de3ab30aed75709f04442974b} 
+\index{main.c@{main.c}!IntFactorial@{IntFactorial}}
+\index{IntFactorial@{IntFactorial}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{IntFactorial()}{IntFactorial()}}
+{\footnotesize\ttfamily unsigned long long int Int\+Factorial (\begin{DoxyParamCaption}\item[{unsigned long long int}]{F }\end{DoxyParamCaption})}
+
+
+
+Integer factorial function. 
+
+Recursive function that computes F! for positive integers. Because it is not required for Bonus\+Exp, the negative factorials are not properly implemented.
+
+
+\begin{DoxyParams}{Parameters}
+{\em F} & Operand \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+F! 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+64-\/bit computers are limited to 20! 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{main_8c_source_l00234}{234}} of file \mbox{\hyperlink{main_8c_source}{main.\+c}}.
+
+\Hypertarget{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+\index{main.c@{main.c}!main@{main}}
+\index{main@{main}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Main function. 
+
+Prompts the user to enter a base and exponent, then reports the result. 
+
+Definition at line \mbox{\hyperlink{main_8c_source_l00051}{51}} of file \mbox{\hyperlink{main_8c_source}{main.\+c}}.
+
+\Hypertarget{main_8c_a9da74129d83e9dee223f76178216c57d}\label{main_8c_a9da74129d83e9dee223f76178216c57d} 
+\index{main.c@{main.c}!NatExp@{NatExp}}
+\index{NatExp@{NatExp}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{NatExp()}{NatExp()}}
+{\footnotesize\ttfamily double Nat\+Exp (\begin{DoxyParamCaption}\item[{double}]{X }\end{DoxyParamCaption})}
+
+
+
+Function to calculate e\texorpdfstring{$^\wedge$}{\string^}X using the power series expansion. 
+
+The operation uses the power series expansion to calculate e\texorpdfstring{$^\wedge$}{\string^}X. It will continue to sum up sequential power series terms until it successfully detects convergence within six decimal points.
+
+The series does not converge well for X \texorpdfstring{$>$}{>} 1, and doesn\textquotesingle{}t converge at all for X \texorpdfstring{$>$}{>} 3 (within a number of iterations that this machine can compute). To get around this, the function takes advantage of power rules that say\+: \begin{DoxyVerb}        e^(X) = e^(X * N/N) = ( e^(X/N) )^(N)
+\end{DoxyVerb}
+ By limiting N to be positive integers, the power series can be used to calculate e\texorpdfstring{$^\wedge$}{\string^}(X/N) and that result can be then raised to the Nth power using Whole\+Exp, which effectively guarantees quick convergence to e\texorpdfstring{$^\wedge$}{\string^}X.
+
+The largest reason for this limitation is that the series uses factorials, and 64-\/bit computers are limited to 20!, and thus, 20 terms of the power series.
+
+Because it is not required for Bonus\+Exp, negative inputs are not fully tested.
+
+
+\begin{DoxyParams}{Parameters}
+{\em X} & Input real number \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+e\texorpdfstring{$^\wedge$}{\string^}X 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{main_8c_source_l00350}{350}} of file \mbox{\hyperlink{main_8c_source}{main.\+c}}.
+
+\Hypertarget{main_8c_ae15e79727ae79852a73a176880787b32}\label{main_8c_ae15e79727ae79852a73a176880787b32} 
+\index{main.c@{main.c}!NonRealRoot@{NonRealRoot}}
+\index{NonRealRoot@{NonRealRoot}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{NonRealRoot()}{NonRealRoot()}}
+{\footnotesize\ttfamily void Non\+Real\+Root (\begin{DoxyParamCaption}\item[{unsigned long long int}]{X,  }\item[{double \texorpdfstring{$\ast$}{*}}]{result }\end{DoxyParamCaption})}
+
+
+
+Function to calculate (-\/1)\texorpdfstring{$^\wedge$}{\string^}(1/X). 
+
+Uses de Moivre\textquotesingle{}s Formula to compute the first Xth root of (-\/1). An imaginary number as X Xth roots, but this function only pulls the first. Applications like Wolfram\+Alpha are programmed to return all X Xth roots, and other calculators might use other roots in their algorithms. The first Xth root is simply the easiest to calculate.
+
+Because it is not required for Bonus\+Exp, negative inputs are not fully tested.
+
+
+\begin{DoxyParams}{Parameters}
+{\em X} & Positive integer root \\
+\hline
+{\em result} & \texorpdfstring{$>$}{>}2-\/element result buffer for the real and non-\/real parts \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{main_8c_source_l00455}{455}} of file \mbox{\hyperlink{main_8c_source}{main.\+c}}.
+
+\Hypertarget{main_8c_a59de830824acbaf11ea94069bb1ca403}\label{main_8c_a59de830824acbaf11ea94069bb1ca403} 
+\index{main.c@{main.c}!Rationalize@{Rationalize}}
+\index{Rationalize@{Rationalize}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{Rationalize()}{Rationalize()}}
+{\footnotesize\ttfamily void Rationalize (\begin{DoxyParamCaption}\item[{double}]{X,  }\item[{unsigned long long int \texorpdfstring{$\ast$}{*}}]{result }\end{DoxyParamCaption})}
+
+
+
+Function to get a simplified fraction from a real, positive decimal. 
+
+The operation relies on the fact that computers cannot store irrational numbers. Therefore, any real computer-\/realizable number can be described by a ratio of two integers, most simply by a denominator that is a power of
+\begin{DoxyEnumerate}
+\item For example\+: \begin{DoxyVerb}           314159
+3.14159 = --------
+           100000
+\end{DoxyVerb}
+ After converting the number to a ratio using a power of ten, the function uses a list of the first 26 prime numbers to factor the ratio as much as possible. Finally, the simplified numerator and denominator are stored in the result buffer.
+\end{DoxyEnumerate}
+
+Because it is not required for Bonus\+Exp, negative inputs are not fully tested.
+
+
+\begin{DoxyParams}{Parameters}
+{\em X} & Input real, positive number \\
+\hline
+{\em result} & Buffer to store the simplified numerator and denominator in \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{main_8c_source_l00268}{268}} of file \mbox{\hyperlink{main_8c_source}{main.\+c}}.
+
+\Hypertarget{main_8c_aa3aed71ff2c11b33515d924804c8b41c}\label{main_8c_aa3aed71ff2c11b33515d924804c8b41c} 
+\index{main.c@{main.c}!Sine@{Sine}}
+\index{Sine@{Sine}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{Sine()}{Sine()}}
+{\footnotesize\ttfamily double Sine (\begin{DoxyParamCaption}\item[{double}]{X }\end{DoxyParamCaption})}
+
+
+
+Function to compute sine in radians. 
+
+Uses the first nine terms of the Maclaurin series to estimate the sine function. The series is limited to ten terms because 64-\/bit computers cannot compute factorials greater than 20!.
+
+The series does not converge quickly for inputs with magnitude \texorpdfstring{$>$}{>} 2pi. Since the trigonometric functions periodic, the function intentionally removes full rotations from the input in order to guarantee convergence within the computational limit.
+
+Because it is not required for Bonus\+Exp, negative inputs are not fully tested.
+
+
+\begin{DoxyParams}{Parameters}
+{\em X} & Input in radians \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+sin(\+X) 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{main_8c_source_l00551}{551}} of file \mbox{\hyperlink{main_8c_source}{main.\+c}}.
+
+\Hypertarget{main_8c_a48aaf9a431fcced2af488a6b99551519}\label{main_8c_a48aaf9a431fcced2af488a6b99551519} 
+\index{main.c@{main.c}!WholeExp@{WholeExp}}
+\index{WholeExp@{WholeExp}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{WholeExp()}{WholeExp()}}
+{\footnotesize\ttfamily double Whole\+Exp (\begin{DoxyParamCaption}\item[{double}]{X,  }\item[{int}]{n }\end{DoxyParamCaption})}
+
+
+
+Integer exponentiation function. 
+
+Recursive function that computes X\texorpdfstring{$^\wedge$}{\string^}n for integer powers.
+
+
+\begin{DoxyParams}{Parameters}
+{\em X} & Base \\
+\hline
+{\em n} & Integer exponent \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+X\texorpdfstring{$^\wedge$}{\string^}n 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{main_8c_source_l00211}{211}} of file \mbox{\hyperlink{main_8c_source}{main.\+c}}.
+

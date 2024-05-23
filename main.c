@@ -465,7 +465,7 @@ void NonRealRoot(unsigned long long int X, double *result)
 
 
 
-/*! @brief Function to cosine in radians.
+/*! @brief Function to compute cosine in radians.
     
     Uses the first ten terms of the Maclaurin series to estimate the cosine 
     function. The series is limited to ten terms because 64-bit computers
@@ -531,7 +531,7 @@ double Cosine(double X)
 
 
 
-/*! @brief Function to sine in radians.
+/*! @brief Function to compute sine in radians.
     
     Uses the first nine terms of the Maclaurin series to estimate the sine 
     function. The series is limited to ten terms because 64-bit computers
