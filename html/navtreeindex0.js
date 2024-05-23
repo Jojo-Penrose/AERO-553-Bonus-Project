@@ -5,8 +5,6 @@ var NAVTREEINDEX0 =
 "globals_func.html":[1,1,1],
 "index.html":[],
 "index.html":[0],
-"index.html#s_name":[0,0],
-"index.html#ss_name":[0,0,0],
 "main_8c.html":[1,0,0],
 "main_8c.html#a27629f0c27f2c95d69f5f888a32f9f3c":[1,0,0,0],
 "main_8c.html#a48aaf9a431fcced2af488a6b99551519":[1,0,0,9],

@@ -25,7 +25,7 @@
 var NAVTREE =
 [
   [ "AERO-553-Bonus-Project", "index.html", [
-    [ "AERO 553 Bonus Project Manual", "index.html", "index" ],
+    [ "AERO 553 Bonus Project Source Manual", "index.html", null ],
     [ "Files", "files.html", [
       [ "File List", "files.html", "files_dup" ],
       [ "Globals", "globals.html", [
