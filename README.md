@@ -3,6 +3,33 @@ This file contains the implementation and demonstration code for the AERO 553 bo
 
 To view the full code manual and marked up source, visit the GitHub Pages site at: https://jojo-penrose.github.io/AERO-553-Bonus-Project/html/index.html
 
+See below for solution examples and the algorithm's full derivation.
+
+# Solution Examples (w/ WolframAlpha Comparison)
+![image](https://github.com/Jojo-Penrose/AERO-553-Bonus-Project/assets/44389628/58db1ec1-1ef4-41b9-890f-563b671236d0)
+
+![image](https://github.com/Jojo-Penrose/AERO-553-Bonus-Project/assets/44389628/f4b4e2ae-f737-41fc-a20d-16324e45dee2)
+
+![image](https://github.com/Jojo-Penrose/AERO-553-Bonus-Project/assets/44389628/dde95355-2b35-4992-a5ed-ab44b63577a8)
+
+![image](https://github.com/Jojo-Penrose/AERO-553-Bonus-Project/assets/44389628/83610cd9-5e5c-49d2-8df2-4026a0fb36dc)
+
+![image](https://github.com/Jojo-Penrose/AERO-553-Bonus-Project/assets/44389628/287be551-31e1-487a-a5ab-6195601391f4)
+
+![image](https://github.com/Jojo-Penrose/AERO-553-Bonus-Project/assets/44389628/e1f1c184-546a-43f8-80a2-dcb8b2f4a956)
+
+![image](https://github.com/Jojo-Penrose/AERO-553-Bonus-Project/assets/44389628/ed8ce198-4daf-44c9-90d5-acec7573cc9d)
+
+Note that they disagree on the sign of the imaginary part. However, this is only a consequence of *which* root the calculator chooses to report -- in this example, there are five distinct roots:
+
+![image](https://github.com/Jojo-Penrose/AERO-553-Bonus-Project/assets/44389628/8fdd1059-c551-4fe6-b00d-262f4969487d)
+
+![image](https://github.com/Jojo-Penrose/AERO-553-Bonus-Project/assets/44389628/cef187fd-cf41-44e5-aeda-8d5968a01f9c)
+
+Again, the calculators disagree on the sign (and it would take far too many clicks on the "More Roots" button to reach this particular one). However, recall that *all complex roots must come as complex conjugates* -- in other words, these two results are efffectively equivalent.
+
+![image](https://github.com/Jojo-Penrose/AERO-553-Bonus-Project/assets/44389628/ae9ba288-5a1f-4a3e-bbfc-dfaeffc0aa2b)
+
 # Solution Derivation
 The challenge in this project was to write a function in a compiled language to compute the exponentiation function for all real numbers:
 
@@ -226,7 +253,5 @@ In review, the workflow for computing $X^Y$ is:
    - Raise $e$ to $((c/d)\ln{a})$ and $((c/d)\ln{b})$
 4. Use $n$ to determine which of $T_2$ or $T_3$ must be flipped
 5. Combine terms: $X^Y = (T_1)(T_2)(T_3)$
-
-
 
 
