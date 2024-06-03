@@ -39,7 +39,7 @@ The cases that make this a challenge typically look like, for example:
 
 $$ (-1.1)^{0.7} $$
 
-Where some root of a negative number is requested, and the answers are potentially non-real. Typically, on handheld calculators, logarithm-based methods are used to compute non-integer powers, and the domain is heavily restricted as a result. With the available power on modern computers (and the examples set by applications like MATLAB and WolframAlpha), a more robust system is surely possible.
+where some root of a negative number is requested, and the answers are potentially non-real. Typically, on handheld calculators, logarithm-based methods are used to compute non-integer powers, and the domain is heavily restricted as a result. With the available power on modern computers (and the examples set by applications like MATLAB and WolframAlpha), a more robust system is surely possible.
 
 To come up with a solution to this problem, one critical assumption was made that makes the entire algorithm possible. In mathematics, the domain of all real numbers includes irrational numbers. On a computer, however, irrational numbers cannot be truly represented, only approximated. The simplest way to perform floating-point computation on a computer is to represent any decimal number as a ratio of integers. For example:
 
@@ -91,11 +91,11 @@ To derive the generalized exponentiation algorithm, begin by applying the comput
 
 $$ X^Y = \bigl( \frac{a}{b} \bigr) ^{\frac{c}{d}}, \text{ where } X = \frac{a}{b} \text{ and } Y = \frac{c}{d} $$
 
-Where $a$, $b$, $c$, and $d$ are **integers.** This is easily done in C by multiplying $X$ and $Y$ by increasing powers of $10$ until the floating point passes the last digit. The algorithm also uses a list of the first 26 prime numbers to factor the ratio as much as possible. In order to handle negative numbers, we further describe the operation by:
+where $a$, $b$, $c$, and $d$ are **integers.** This is easily done in C by multiplying $X$ and $Y$ by increasing powers of $10$ until the floating point passes the last digit. The algorithm also uses a list of the first 26 prime numbers to factor the ratio as much as possible. In order to handle negative numbers, we further describe the operation by:
 
 $$ X^Y = \lgroup (-1)^m\frac{a}{b} \rgroup ^{ \lgroup (-1)^n\frac{c}{d} \rgroup }, \text{ where } X = (-1)^m\frac{a}{b} \text{ and } Y = (-1)^n\frac{c}{d} $$
 
-Where $m$ and $n$ can be 0 or 1. If the base or exponent are positive, then $m = 0$ or $n = 0$, respectively. If the base or exponent are negative, then $m = 1$ or $n = 1$, respectively. This guarantees that $a$, $b$, $c$, and $d$ are **positive integers.**
+where $m$ and $n$ can be 0 or 1. If the base or exponent are positive, then $m = 0$ or $n = 0$, respectively. If the base or exponent are negative, then $m = 1$ or $n = 1$, respectively. This guarantees that $a$, $b$, $c$, and $d$ are **positive integers.**
 
 Use the rules of exponents to manipulate the operation and split the base into three terms $T_1$, $T_2$, and $T_3$:
 
@@ -119,13 +119,13 @@ Grouping the exponent subterms in this manner shows that, under the rules of exp
 
 Starting with $T_1$, there are four possible combinations of $m$ and $n$ that are determined by the sign of the base and exponent. They are:
 
-$$ m = 0, n = 0: (-1)^0 = 1 $$
+$$ m = 0, n = 0: (-1)^{0(1)} = (-1)^0 = 1 $$
 
-$$ m = 0, n = 1: (-1)^0 = 1 $$
+$$ m = 0, n = 1: (-1)^{0(-1)} = (-1)^0 = 1 $$
 
-$$ m = 1, n = 0: (-1)^1 = -1 $$
+$$ m = 1, n = 0: (-1)^{1(1)} = (-1)^1 = -1 $$
 
-$$ m = 1, n = 1: (-1)^{-1} = -1 $$
+$$ m = 1, n = 1: (-1)^{1(-1)} = (-1)^{-1} = \frac{1}{-1} = -1 $$
 
 In the trivial case that $m = 0$ (i.e., $X$ is positive), the entire first term $T_1$ works out to 1 and the result is guaranteed to be real. If $X$ is negative, however, certain conditions lead to non-real answers.
 
@@ -139,7 +139,7 @@ $$ c \text{ is odd: } T_1 = (-1) ^{1/d} $$
 
 $$ c \text{ is even: } T_1 = (1) ^{1/d} = 1 $$
 
-Knowing this, we can case-check $m$, $n$ (using sign), and $c$ (using modulo 2) at the start and immediately determine whether the answer is real or not. If it is guaranteed to be real, then $T_1$ is simply $1$, and the algorithm can continue without dealing with complex numbers at all. When $c$ is odd in this case, $T_1$ reduces to an integer root of $-1$. In order to resolve the $d^{\text{th}}$ root of $-1$, we first need to represent $-1$ as a complex number in polar form:
+If $c$ is even, then the $-1$ flips sign and $T_1 = 1$. Knowing this, we can case-check $m$, $n$ (using sign), and $c$ (using modulo 2) at the start and immediately determine whether the answer is real or not. If it is guaranteed to be real, then $T_1$ is simply $1$, and the algorithm can continue without dealing with complex numbers at all. When $c$ is odd as in this case, $T_1$ reduces to an integer root of $-1$. In order to resolve the $d^{\text{th}}$ root of $-1$, we first need to represent $-1$ as a complex number in polar form:
 
 $$ Z = \rho \bigl( \cos{\phi} + i\sin{\phi} \bigr) $$ 
 
@@ -185,11 +185,11 @@ $$ \text{If } n=0 \text{: } (a)^{\frac{c}{d}} \text{, } (\frac{1}{b})^{\frac{c}{
 
 $$ \text{If } n=1 \text{: } (\frac{1}{a})^{\frac{c}{d}} \text{, } (b)^{\frac{c}{d}} $$
 
-Therefore, $n$ simply determines which term, $a$ or $b$, is flipped. Using the power of a quotient rule: 
+Therefore, $n$ simply determines which term, $a$ or $b$, is flipped. We may also show that, using the power of a quotient rule: 
 
 $$ (\frac{1}{b}) ^{\frac{c}{d}} = \frac{1}{b^{\frac{c}{d}}} $$
 
-Then, we only need to calculate $a^{\frac{c}{d}}$ and $b^{\frac{c}{d}}$ and use $n$ to decide which one should divide $1$ as a final step; in other words, we may limit our discussion to $T_2$, because the calculation of $T_3$ is essentially identical.
+Thus, we only need to calculate $a^{\frac{c}{d}}$ and $b^{\frac{c}{d}}$ and use $n$ to decide which one should divide $1$ as a final step; in other words, we may limit our discussion to $T_2$, because the calculation of $T_3$ is essentially identical.
 
 The full decomposition (ignoring the $-1$ exponent, as it has been shown to be a trivial final step) is:
 
@@ -215,7 +215,7 @@ $$ lim_{x\to\infty} \bigl( \ln{x} \bigr) = \infty $$
 
 $$ lim_{x\to\infty} \bigl( \frac{d}{dx}\ln{x} \bigr) = lim_{x\to\infty} \bigl( \frac{1}{x} \bigr) = 0 $$
 
-The limit of the natural logarithm tending towards infinity is infinite, but its derivative (the slope of the curve) tends to zero -- which suggests that the natural logarithm is asymptotic, but how can this be? Essentially, what this is saying is that, as the input $x$ to the natural logarithm grows, the change in the result is insignificant in comparison.
+The limit of the natural logarithm tending towards infinity is infinite, but its derivative (the slope of the curve) tends to zero -- which suggests that the natural logarithm is asymptotic, but how can this be? Essentially, what this is saying is that, as the input $x$ to the natural logarithm grows, the change in $x$'s natural logarithm is insignificant in comparison.
 
 Consider this: the algorithm is designed to use 64-bit integers everywhere (unsigned long long int) to fully leverage modern computers and online C compilers, and the largest unsigned 64-bit integer is:
 
@@ -243,6 +243,7 @@ $$ X^Y = (T_1)(T_2)(T_3) $$
 
 In review, the workflow for computing $X^Y$ is:
 
+0. Catch and return trivial cases ($0^Y=0$, $X^0=1$, $1^Y=1$, $X^1=X$)
 1. Factorize $X$ to $\frac{a}{b}$ and $Y$ to $\frac{c}{d}$, and record the sign variables $m$ and $n$
 2. Use $m$ and $c$ to determine if $T_1$ (and therefore, the result) is potentially non-real
    - If it is, use de Moivre's formula to compute the real and imaginary components
